@@ -8,7 +8,6 @@ https://github.com/user-attachments/assets/f40a41bf-9ccb-44b5-879d-89a01f9cdb39
 
 
 
----
 
 ## Goals
 
@@ -23,7 +22,6 @@ https://github.com/user-attachments/assets/f40a41bf-9ccb-44b5-879d-89a01f9cdb39
 - **Course:** Modeling  
 - **Team:** Noé Bertramo, Théophile Donato, Karina Musina
 
----
 
 ## Method & Models
 
@@ -50,7 +48,7 @@ https://github.com/user-attachments/assets/f40a41bf-9ccb-44b5-879d-89a01f9cdb39
    $$
 
 3. **Attachment** (based on number of flake neighbors \(n\)):
-   - \( n \in \{1,2\} \): attach if \( b \ge \beta \)
+   - $n \in \{1,2\}$: attach if $b \ge \beta$
    - \( n = 3 \): attach if \( b \ge \alpha \) and an additional condition on \( d \) (threshold \( \theta \))
    - \( n \ge 4 \): attach automatically
 
@@ -68,7 +66,6 @@ https://github.com/user-attachments/assets/f40a41bf-9ccb-44b5-879d-89a01f9cdb39
 - No global refreezing of the entire crystal (only partial boundary melting).  
 - **Discrete time**; local linear stability considered.
 
----
 
 ## Parameters & qualitative effects
 
