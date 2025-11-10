@@ -2,12 +2,20 @@
 
 Numerical simulation to generate synthetic snowflakes and study how model parameters shape their morphology.
 
-
-<div align="center">
-  <video src="examples/example.mp4" autoplay loop muted playsinline width="600"></video>
+<p align="center">
+  <video src="examples/example.mp4"
+         width="640"
+         controls
+         autoplay
+         loop
+         muted
+         playsinline>
+  </video>
   <br/>
   <em>Snowflake growth</em>
-</div>
+</p>
+
+---
 
 ## Goals
 
@@ -17,15 +25,18 @@ Numerical simulation to generate synthetic snowflakes and study how model parame
 
 ## Project Scope
 
-- **Level:** 1st MEng year
-- **Period:** **January 2023**
-- **Course:** Modeling
+- **Level:** 1st MEng year  
+- **Period:** **January 2023**  
+- **Course:** Modeling  
 - **Team:** Noé Bertramo, Théophile Donato, Karina Musina
 
-##  Method & Models
+---
+
+## Method & Models
 
 ### Continuous-state model (used)
-- 2D **hexagonal** grid; each cell tracks three quantities:  
+
+- 2D **hexagonal** lattice; each cell stores three quantities:  
   **b** (quasi-liquid water), **c** (ice), **d** (vapor).
 - Each iteration applies four stages:
   1) **Diffusion** of vapor (**d**)
@@ -34,36 +45,46 @@ Numerical simulation to generate synthetic snowflakes and study how model parame
   4) **Melting** (a fraction of **b**/**c** returns to **d** at the boundary)
 - Implemented in **Python** with **Pygame** for real-time visualization.
 
-
 ### Algorithm (high-level)
+
 1. **Diffusion:** local averaging of **d** for non-flake cells.  
+
 2. **Freezing** (on the boundary):  
-   $ b \leftarrow b + (1-\kappa)\,d,\quad c \leftarrow c + \kappa\,d,\quad d \leftarrow 0 $
-3. **Attachment** (based on number of flake neighbors $n$):
-   - $ n \in \{1,2\} $: attach if $ b \ge \beta $
-   - $ n = 3 $: attach if $ b \ge \alpha $ and an additional condition on $ d $ (threshold $ \theta $)
-   - $ n \ge 4 $: attach automatically
+   $$
+   b \leftarrow b + (1-\kappa)\,d,\quad
+   c \leftarrow c + \kappa\,d,\quad
+   d \leftarrow 0
+   $$
+
+3. **Attachment** (based on number of flake neighbors \(n\)):
+   - \( n \in \{1,2\} \): attach if \( b \ge \beta \)
+   - \( n = 3 \): attach if \( b \ge \alpha \) and an additional condition on \( d \) (threshold \( \theta \))
+   - \( n \ge 4 \): attach automatically
+
 4. **Melting** (new boundary cells):  
-   $ b \leftarrow (1-\mu)\,b,\quad c \leftarrow (1-\gamma)\,c,\quad d \leftarrow d + \mu\,b + \gamma\,c $
+   $$
+   b \leftarrow (1-\mu)\,b,\quad
+   c \leftarrow (1-\gamma)\,c,\quad
+   d \leftarrow d + \mu\,b + \gamma\,c
+   $$
 
 ### Key assumptions
-- **2D** growth on a **hexagonal** lattice.
-- **Locally homogeneous** environment (flake ≪ cloud).
-- No global refreezing of the entire crystal (only partial boundary melting).
+
+- **2D** growth on a **hexagonal** lattice.  
+- **Locally homogeneous** environment (flake \( \ll \) cloud).  
+- No global refreezing of the entire crystal (only partial boundary melting).  
 - **Discrete time**; local linear stability considered.
 
-##  Parameters & qualitative effects
+---
 
-- **$ \rho $** — vapor density / supersaturation:  
-  higher $ \rho $ ⇒ faster growth and more **dendritic** patterns.
-- **$ \beta $** — attachment threshold at **tips** (1–2 neighbors):  
-  lower $ \beta $ ⇒ faster tip elongation.
-- **$ \mu $** — **melting** intensity of quasi-liquid water:  
-  larger $ \mu $ ⇒ sharper **hexagonal faceting**.
-- **$ \kappa $** — fraction of vapor that **freezes** at the boundary:  
-  larger $ \kappa $ ⇒ longer primary arms and more side-branching.
+## Parameters & qualitative effects
 
+- **\( \rho \)** — vapor density / supersaturation:  
+  higher \( \rho \) ⇒ faster growth and more **dendritic** patterns.
+- **\( \beta \)** — attachment threshold at **tips** (1–2 neighbors):  
+  lower \( \beta \) ⇒ faster tip elongation.
+- **\( \mu \)** — **melting** intensity of quasi-liquid water:
+  
 ## References
 - Gravner, J., & Griffeath, D. — Modeling Snow Crystal Growth II: A Mesoscopic Lattice Map with Plausible Dynamics.
 - Li, J. — On the Geometry and Mathematical Modelling of Snowflakes and Viruses.
-
