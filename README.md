@@ -2,18 +2,11 @@
 
 Numerical simulation to generate synthetic snowflakes and study how model parameters shape their morphology.
 
-<p align="center">
-  <video src="examples/example.mp4"
-         width="640"
-         controls
-         autoplay
-         loop
-         muted
-         playsinline>
-  </video>
-  <br/>
-  <em>Snowflake growth</em>
-</p>
+
+
+https://github.com/user-attachments/assets/f40a41bf-9ccb-44b5-879d-89a01f9cdb39
+
+
 
 ---
 
